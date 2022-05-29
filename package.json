@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "build": "webpack",
-    "dev": "webpack serve"
+    "build": "webpack --mode production",
+    "dev": "webpack serve",
+    "bundle-report": "webpack-bundle-analyzer dist/stats.json"
   },
   "repository": {
     "type": "git",

@@ -3,12 +3,11 @@ const HtmlWebpackPlugin = require ('html-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports={
-    mode:'production',
     entry: {
         index:path.resolve(__dirname,'src/index.js')
     },
     output:{
-        path:path.resolve(__dirname,'build'),
+        path:path.resolve(__dirname,'dist'),
         filename:'[name]-[contenthash].js',
         clean:true,
         assetModuleFilename:'images/[name][ext]'
@@ -54,9 +53,13 @@ module.exports={
         new HtmlWebpackPlugin({
             title:'Webpack App',
             filename:'index.html',
-            template:path.resolve(__dirname,'src/template.html')
+            template:'src/template.html'
         }),
-        new BundleAnalyzerPlugin()
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'disabled',
+            generateStatsFile: true,
+            statsOptions: { source: false }
+          })
     ]
 
 }
